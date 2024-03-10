@@ -1,11 +1,13 @@
 {% extends 'flights/layout.html' %}
 
+
+</style>
 {% block body %}
-    <h1>Flights</h1>
-    <ul>
+    <h1 style="color: rgb(3, 33, 59);text-align: center;">Flights</h1>
+    <ul style="text-align: center;">
         {% for flight in flights %}
             <li>
-                <a href="{% url 'flight' flight.id %}">
+                <a style="color: rgb(7, 45, 65);" href="{% url 'flight' flight.id %}">
                 Flight {{ flight.id }}: {{ flight.origin }} to {{ flight.destination }} 
                 </a>
             </li>

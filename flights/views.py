@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models import Max
 
 # i need flights
 from django.http import HttpResponseRedirect
@@ -15,6 +16,10 @@ def index(request):
 
 def flight(request, flight_id):
 
+    max_id = Flight.objects.all().aggregate(Max("id"))["id__max"]
+    if flight_id > max_id :
+        return render(request, 'flights/404.html')
+ 
     flight = Flight.objects.get(pk=flight_id)
 
     return render (request, 'flights/flight.html', {
